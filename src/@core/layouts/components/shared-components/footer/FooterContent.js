@@ -20,31 +20,7 @@ const FooterContent = () => {
           vinaydanidhariya
         </Link>
       </Typography>
-      {hidden ? null : (
-        <Box sx={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', '& :not(:last-child)': { mr: 4 } }}>
-          <Link
-            target='_blank'
-            href='/blob/main/LICENSE'
-          >
-            MIT License
-          </Link>
-          <Link target='_blank' href='/'>
-            More Themes
-          </Link>
-          <Link
-            target='_blank'
-            href='/blob/main/README.md'
-          >
-            Documentation
-          </Link>
-          <Link
-            target='_blank'
-            href='/issues'
-          >
-            Support
-          </Link>
-        </Box>
-      )}
+
     </Box>
   )
 }

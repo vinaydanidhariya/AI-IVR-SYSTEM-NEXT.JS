@@ -54,11 +54,7 @@ const AppBarContent = props => {
             sx={{ mr: 4, display: 'flex' }}
             href=''
           >
-            <img
-              height={24}
-              alt='github stars'
-              src='https://img.shields.io/github/stars/vinaydanidhariya?style=social'
-            />
+
           </Box>
         )}
         <ModeToggler settings={settings} saveSettings={saveSettings} />
