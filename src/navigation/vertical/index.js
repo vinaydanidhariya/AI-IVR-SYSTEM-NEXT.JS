@@ -20,6 +20,11 @@ const navigation = () => {
       path: '/'
     },
     {
+      title: 'Dashboard',
+      icon: HomeOutline,
+      path: '/dashboard'
+    },
+    {
       title: 'Chat App',
       icon: ChatIcon,
       path: '/chat',

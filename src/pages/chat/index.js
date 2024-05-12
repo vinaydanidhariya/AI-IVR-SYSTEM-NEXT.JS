@@ -58,7 +58,7 @@ const ChatUI = () => {
           borderRadius: "20px",
           display: "flex",
           flexDirection: "column",
-          bgcolor: "grey.900",
+          bgcolor: "#f1f5f9",
         }}
       >
         <Box sx={{ flexGrow: 1, overflow: "auto", p: 2 }}>
