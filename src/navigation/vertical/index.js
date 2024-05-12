@@ -15,8 +15,8 @@ import ChatIcon from '@mui/icons-material/Chat';
 const navigation = () => {
   return [
     {
-      title: 'Dashboard',
-      icon: HomeOutline,
+      title: '',
+      icon: CubeOutline,
       path: '/'
     },
     {

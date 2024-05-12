@@ -1,11 +1,6 @@
-// ** React Imports
 import { useState } from 'react'
-
-// ** Next Imports
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-
-// ** MUI Components
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import Divider from '@mui/material/Divider'
@@ -21,25 +16,16 @@ import { styled, useTheme } from '@mui/material/styles'
 import MuiCard from '@mui/material/Card'
 import InputAdornment from '@mui/material/InputAdornment'
 import MuiFormControlLabel from '@mui/material/FormControlLabel'
-
-// ** Icons Imports
 import Google from 'mdi-material-ui/Google'
 import Github from 'mdi-material-ui/Github'
 import Twitter from 'mdi-material-ui/Twitter'
 import Facebook from 'mdi-material-ui/Facebook'
 import EyeOutline from 'mdi-material-ui/EyeOutline'
 import EyeOffOutline from 'mdi-material-ui/EyeOffOutline'
-
-// ** Configs
 import themeConfig from 'src/configs/themeConfig'
-
-// ** Layout Import
 import BlankLayout from 'src/@core/layouts/BlankLayout'
-
-// ** Demo Imports
 import FooterIllustrationsV1 from 'src/views/pages/auth/FooterIllustration'
 
-// ** Styled Components
 const Card = styled(MuiCard)(({ theme }) => ({
   [theme.breakpoints.up('sm')]: { width: '28rem' }
 }))
@@ -58,13 +44,12 @@ const FormControlLabel = styled(MuiFormControlLabel)(({ theme }) => ({
 }))
 
 const LoginPage = () => {
-  // ** State
   const [values, setValues] = useState({
     password: '',
+    email: '',
     showPassword: false
   })
 
-  // ** Hook
   const theme = useTheme()
   const router = useRouter()
 
@@ -78,6 +63,18 @@ const LoginPage = () => {
 
   const handleMouseDownPassword = event => {
     event.preventDefault()
+  }
+
+  async function handleSubmit(event) {
+    event.preventDefault()
+    const email = values.email
+    const password = values.password
+
+    if (email === 'admin@admin.com' && password === 'SHC@778899') {
+      router.push('/dashboard')
+    } else {
+      // Handle errors
+    }
   }
 
   return (
@@ -163,8 +160,16 @@ const LoginPage = () => {
             </Typography>
             <Typography variant='body2'>Please sign-in to your account and start the adventure</Typography>
           </Box>
-          <form noValidate autoComplete='off' onSubmit={e => e.preventDefault()}>
-            <TextField autoFocus fullWidth id='email' label='Email' sx={{ marginBottom: 4 }} />
+          <form noValidate autoComplete='off' onSubmit={handleSubmit}>
+            <TextField
+              autoFocus
+              fullWidth
+              id='email'
+              label='Email'
+              sx={{ marginBottom: 4 }}
+              value={values.email}
+              onChange={handleChange('email')}
+            />
             <FormControl fullWidth>
               <InputLabel htmlFor='auth-login-password'>Password</InputLabel>
               <OutlinedInput
@@ -188,23 +193,30 @@ const LoginPage = () => {
               />
             </FormControl>
             <Box
-              sx={{ mb: 4, display: 'flex', alignItems: 'center', flexWrap: 'wrap', justifyContent: 'space-between' }}
+              sx={{
+                mb: 4,
+                display: 'flex',
+                alignItems: 'center',
+                flexWrap: 'wrap',
+                justifyContent: 'space-between'
+              }}
             >
               <FormControlLabel control={<Checkbox />} label='Remember Me' />
               <Link passHref href='/'>
                 <LinkStyled onClick={e => e.preventDefault()}>Forgot Password?</LinkStyled>
               </Link>
             </Box>
-            <Button
-              fullWidth
-              size='large'
-              variant='contained'
-              sx={{ marginBottom: 7 }}
-              onClick={() => router.push('/dashboard')}
-            >
+            <Button fullWidth size='large' variant='contained' sx={{ marginBottom: 7 }} onClick={handleSubmit}>
               Login
             </Button>
-            <Box sx={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', justifyContent: 'center' }}>
+            <Box
+              sx={{
+                display: 'flex',
+                alignItems: 'center',
+                flexWrap: 'wrap',
+                justifyContent: 'center'
+              }}
+            >
               <Typography variant='body2' sx={{ marginRight: 2 }}>
                 New on our platform?
               </Typography>
