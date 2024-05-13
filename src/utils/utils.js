@@ -63,5 +63,51 @@ const call_llm = async (message) => {
 
 }
 
-module.exports = call_llm;
+const callGroqApi = async (question) => {
+  const base = "https://api.groq.com/openai/v1/chat/completions";
+
+  const data = {
+    "messages": [
+      {
+        "role": "system",
+        "content": "you are a helpful assistant."
+      },
+      {
+        "role": "user",
+        "content": prompt+question
+      }
+    ],
+    "model": "mixtral-8x7b-32768",
+    "max_tokens": 512
+  };
+
+  const headers = {
+    "Authorization": "Bearer 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",
+    "Content-Type": "application/json"
+  };
+
+  try {
+    const response = await fetch(base, {
+      method: 'POST',
+      headers: headers,
+      body: JSON.stringify(data)
+    });
+
+    if (!response.ok) {
+      throw new Error('Network response was not ok.');
+    }
+
+    const responseJson = await response.json();
+    const content = responseJson.choices[0].message.content;
+
+    return content;
+  } catch (error) {
+    console.error('Error:', error);
+
+    return null;
+  }
+};
+
+
+module.exports = {call_llm, callGroqApi};
 

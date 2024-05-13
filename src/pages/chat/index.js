@@ -9,7 +9,7 @@ import {
   Paper,
 } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
-import call_llm from "src/utils/utils";
+import {call_llm, callGroqApi} from "src/utils/utils";
 
 const ChatUI = () => {
   const [input, setInput] = React.useState("");
@@ -24,7 +24,8 @@ const ChatUI = () => {
       setMessages(prevMessages => [...prevMessages, newMessage]);
 
       // Make API call to get bot response
-      const botResponse = await call_llm(input);
+
+      const botResponse = await callGroqApi(input);
 
       // Add the bot's response to the chat
       const botMessage = { id: messages.length + 2, text: botResponse, sender: "bot" };
