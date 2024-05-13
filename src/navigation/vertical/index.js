@@ -20,6 +20,11 @@ const navigation = () => {
       path: '/'
     },
     {
+      title: 'Voice-Chat',
+      icon: CubeOutline,
+      path: '/voice-calling'
+    },
+    {
       title: 'Dashboard',
       icon: HomeOutline,
       path: '/dashboard'
