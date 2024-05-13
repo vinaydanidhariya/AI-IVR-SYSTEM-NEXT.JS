@@ -88,18 +88,18 @@ const TabAccount = () => {
           </Grid>
 
           <Grid item xs={12} sm={6}>
-            <TextField fullWidth label='Username' placeholder='johnDoe' defaultValue='johnDoe' />
+            <TextField fullWidth label='Username' placeholder='vinaydanidhariya' defaultValue='vinaydanidhariya' />
           </Grid>
           <Grid item xs={12} sm={6}>
-            <TextField fullWidth label='Name' placeholder='John Doe' defaultValue='John Doe' />
+            <TextField fullWidth label='Name' placeholder='vinay danidhariya' defaultValue='vinay danidhariya' />
           </Grid>
           <Grid item xs={12} sm={6}>
             <TextField
               fullWidth
               type='email'
               label='Email'
-              placeholder='johnDoe@example.com'
-              defaultValue='johnDoe@example.com'
+              placeholder='vinaydanidhariya@gmail.com'
+              defaultValue='vinaydanidhariya@gmail.com'
             />
           </Grid>
           <Grid item xs={12} sm={6}>
