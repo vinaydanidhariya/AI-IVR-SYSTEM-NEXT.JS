@@ -65,6 +65,25 @@ const RegisterPage = () => {
     showPassword: false
   })
 
+  const registerUser = async (e) => {
+
+    e.preventDefault()
+    const { username, email, password } = e.target
+    console.log(username, email, password)
+    await fetch('/api/register', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        username: username,
+        email: email,
+        password: password
+      })
+    }).then(res => console.log(res.json()))
+  }
+
+
   // ** Hook
   const theme = useTheme()
 
@@ -75,6 +94,9 @@ const RegisterPage = () => {
   const handleClickShowPassword = () => {
     setValues({ ...values, showPassword: !values.showPassword })
   }
+
+
+
 
   const handleMouseDownPassword = event => {
     event.preventDefault()
@@ -163,7 +185,9 @@ const RegisterPage = () => {
             </Typography>
             <Typography variant='body2'>Make your app management easy and fun!</Typography>
           </Box>
-          <form noValidate autoComplete='off' onSubmit={e => e.preventDefault()}>
+          <form noValidate autoComplete='off' onSubmit={e => e.preventDefault(
+            registerUser(e)
+          )}>
             <TextField autoFocus fullWidth id='username' label='Username' sx={{ marginBottom: 4 }} />
             <TextField fullWidth type='email' label='Email' sx={{ marginBottom: 4 }} />
             <FormControl fullWidth>
@@ -199,7 +223,7 @@ const RegisterPage = () => {
                 </Fragment>
               }
             />
-            <Button fullWidth size='large' type='submit' variant='contained' sx={{ marginBottom: 7 }}>
+            <Button fullWidth size='large' type='submit' variant='contained' sx={{ marginBottom: 7 }} >
               Sign up
             </Button>
             <Box sx={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', justifyContent: 'center' }}>

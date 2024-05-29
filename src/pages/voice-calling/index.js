@@ -97,7 +97,6 @@ const App = () => {
         )}
 
         {showPublicKeyInvalidMessage ? <PleaseSetYourPublicKeyMessage /> : null}
-        <ReturnToDocsLink />
       </div>
     </Grid >
   );
