@@ -5,11 +5,11 @@ import Button from "../../@core/layouts/components//base/Button";
 import Vapi from "@vapi-ai/web";
 import { isPublicKeyMissingError } from "../../utils";
 import Grid from '@mui/material/Grid'
-import { prompt } from "../../utils/CONSTANTS";
+import { firstMessage, name, prompt } from "../../utils/CONSTANTS";
 
 
 // Put your Vapi Public Key below.
-const vapi = new Vapi("9587701f-e5e1-4fbf-beab-68a6d7847531");
+const vapi = new Vapi("8118c26c-2258-437e-bc0a-773e839a459b");
 
 const App = () => {
   const [connecting, setConnecting] = useState(false);
@@ -104,8 +104,8 @@ const App = () => {
 };
 
 const assistantOptions = {
-  name: "ASSISTANT",
-  firstMessage: "Hello, how can I help you?",
+  name: name,
+  firstMessage: firstMessage,
   transcriber: {
     provider: "deepgram",
     model: "nova-2",
@@ -121,11 +121,12 @@ const assistantOptions = {
     messages: [
       {
         role: "system",
-        content: prompt,
+        content: prompt
       },
     ],
   },
 };
+
 
 const usePublicKeyInvalid = () => {
   const [showPublicKeyInvalidMessage, setShowPublicKeyInvalidMessage] = useState(false);
