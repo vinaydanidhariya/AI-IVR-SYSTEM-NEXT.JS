@@ -31,17 +31,22 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Detect package manager
+      - name: Detect package manager and install dependencies
         id: detect-package-manager
         run: |
           if [ -f "/home/runner/work/AI-IVR-SYSTEM-NEXT.JS/AI-IVR-SYSTEM-NEXT.JS/package.json" ]; then
             echo "manager=npm" >> $GITHUB_OUTPUT
-            echo "command=ci" >> $GITHUB_OUTPUT
+            echo "install_command=install" >> $GITHUB_OUTPUT
+            echo "ci_command=ci" >> $GITHUB_OUTPUT
             echo "runner=npx --no-install" >> $GITHUB_OUTPUT
+            npm install
           else
             echo "Unable to determine package manager"
             exit 1
           fi
+  
+      - name: Install dependencies
+        run: npm ${{ steps.detect-package-manager.outputs.ci_command }}
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
